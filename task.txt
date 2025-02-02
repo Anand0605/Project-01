@@ -1,0 +1,20 @@
+Rest API - JSON
+
+Get/users - list All users html document render - done
+Get/api/users - list All users JSON - done 
+
+Get/api/users/1 - get the user with id 1 - done
+Get/api/users/2 - get the user with id 2 - done
+
+Dynamic path parameters 
+Get/api/users/:id
+:id ->Variable|Dynamic - done
+
+
+
+POST/api/Users - create new user
+browser bydefault get request krte hai 
+
+Patch/api/users/1 - Edit the user with id 1
+
+Delete/api/users/1 - Delete the user with id 1
