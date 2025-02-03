@@ -8,14 +8,15 @@ const PORT = 8000;
 // middileware
 app.use(express.urlencoded({extended:false}))
 
-app.use((req, res, next)=>{
-    console.log("hello from middleware 1");
-    // return res.json({msg:"hello from middleware 1"})
-    next()
-})
+// app.use((req, res, next)=>{
+//     // console.log("hello from middleware 1");
+//     // return res.json({msg:"hello from middleware 1"})
+//     next()
+// })
 
 // Route to get all users
 app.get("/api/users", (req, res) => {
+    // res.setHeader("myName","Anand")  custom header
     return res.json(users);
 });
 
@@ -44,7 +45,7 @@ app.post("/api/users",(req, res)=>{
     const body = req.body;
     users.push({...body, id:users.length +1});
     fs.writeFile('./MOCK_DATA.json',JSON.stringify(users),(err,data)=>{
-        return res.json({status:"success", id:users.length })
+        return res.status(201).json({status:"success", id:users.length })
     })
     
     
