@@ -18,3 +18,8 @@ browser bydefault get request krte hai
 Patch/api/users/1 - Edit the user with id 1
 
 Delete/api/users/1 - Delete the user with id 1
+
+/////Mongo/////
+schema - define the structure
+schema-model
+using model  we do crud operation
