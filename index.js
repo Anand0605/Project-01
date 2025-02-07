@@ -55,25 +55,26 @@ app.use(express.urlencoded({ extended: false }))
 //     return res.json(users);
 // });
 
-app.get('/users', async (req, res) => {
-    try {
-        const allDbUsers = await User.find({});
-        const html = `
-            <ul>
-                ${allDbUsers.map((user) => `<li>${user.firstName} - ${user.email}</li>`).join("")}
-            </ul>
-        `;
-        res.send(html);
-    } catch (error) {
-        console.error("Error:", error);
-        res.status(500).send("Error fetching users.");
-    }
-});
+// app.get('/users', async (req, res) => {
+//     try {
+//         const allDbUsers = await User.find({});
+//         const html = `
+//             <ul>
+//                 ${allDbUsers.map((user) => `<li>${user.firstName} - ${user.email}</li>`).join("")}
+//             </ul>
+//         `;
+//         res.send(html);
+//     } catch (error) {
+//         console.error("Error:", error);
+//         res.status(500).send("Error fetching users.");
+//     }
+// });
 
 // Route to get user by ID
-// app.get("/api/users/:id", (req, res) => {
-//     const id = Number(req.params.id);
-//     const user = users.find((user) => user.id === id);
+// app.get("/api/users/:id",async (req, res) => {
+//     const user = await User.findById(req.params.id)
+//     // const id = Number(req.params.id);
+//     // const user = users.find((user) => user.id === id);
 
 //     if (user) {
 //         return res.json(user); // Return user details if found
@@ -90,9 +91,10 @@ app.get('/users', async (req, res) => {
 //     })
 // })
 // todo edit with user id
-// app.patch("/api/users:id",(req, res)=>{
-//     return res.json({status:"pending"})
-// })
+app.patch("/api/users:id",async(req, res)=>{
+    const user = await User.findById(req.params.id,{lastName:"Changed"});
+    return res.json({status:"success"})
+})
 
 // app.patch("/api/users/:id", (req, res) => {
 //     const id = Number(req.params.id);
